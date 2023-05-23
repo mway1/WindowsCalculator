@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsCalculator.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="534" Width="319">
+        Title="MainWindow" Height="534" Width="323" ResizeMode="NoResize">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="76"/>
+            <RowDefinition Height="53"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="54" Width="303" FontSize="25" TextAlignment="Right" Grid.ColumnSpan="4" Margin="6,0,0,0"/>
+        <Button Content="Button" Grid.Row="3" Grid.Column="0" />
+        <Button Content="Button" Grid.Row="3" Grid.Column="1" />
+        <Button Content="Button" Grid.Row="3" Grid.Column="2" />
+        <Button Content="Button" Grid.Row="3" Grid.Column="3" />
+        <Button Content="Button" Grid.Row="4" Grid.Column="0" />
+        <Button Content="Button" Grid.Row="4" Grid.Column="1" />
+        <Button Content="Button" Grid.Row="4" Grid.Column="2"/>
+        <Button Content="Button" Grid.Row="4" Grid.Column="3" />
+        <Button Content="Button" Grid.Row="4" Grid.Column="0" />
+        <Button Content="Button" Grid.Row="4" Grid.Column="1" />
+        <Button Content="Button" Grid.Row="4" Grid.Column="2" />
+        <Button Content="Button" Grid.Row="4" Grid.Column="3" />
+        <Button Content="Button" Grid.Row="5" Grid.Column="0" />
+        <Button Content="Button" Grid.Row="5" Grid.Column="1" />
+        <Button Content="Button" Grid.Row="5" Grid.Column="2" />
+        <Button Content="Button" Grid.Row="5" Grid.Column="3" />
+        <Button Content="Button" Grid.Row="6" Grid.Column="0" />
+        <Button Content="Button" Grid.Row="6" Grid.Column="1" />
+        <Button Content="Button" Grid.Row="6" Grid.Column="2" />
+        <Button Content="Button" Grid.Row="6" Grid.Column="3" />
+
     </Grid>
 </Window>
