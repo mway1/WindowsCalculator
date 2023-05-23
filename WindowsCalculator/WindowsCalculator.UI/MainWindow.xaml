@@ -8,8 +8,8 @@
         Title="MainWindow" Height="534" Width="323" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="76"/>
-            <RowDefinition Height="53"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -22,27 +22,31 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="54" Width="303" FontSize="25" TextAlignment="Right" Grid.ColumnSpan="4" Margin="6,0,0,0"/>
-        <Button Content="Button" Grid.Row="3" Grid.Column="0" />
-        <Button Content="Button" Grid.Row="3" Grid.Column="1" />
-        <Button Content="Button" Grid.Row="3" Grid.Column="2" />
-        <Button Content="Button" Grid.Row="3" Grid.Column="3" />
-        <Button Content="Button" Grid.Row="4" Grid.Column="0" />
-        <Button Content="Button" Grid.Row="4" Grid.Column="1" />
-        <Button Content="Button" Grid.Row="4" Grid.Column="2"/>
-        <Button Content="Button" Grid.Row="4" Grid.Column="3" />
-        <Button Content="Button" Grid.Row="4" Grid.Column="0" />
-        <Button Content="Button" Grid.Row="4" Grid.Column="1" />
-        <Button Content="Button" Grid.Row="4" Grid.Column="2" />
-        <Button Content="Button" Grid.Row="4" Grid.Column="3" />
-        <Button Content="Button" Grid.Row="5" Grid.Column="0" />
-        <Button Content="Button" Grid.Row="5" Grid.Column="1" />
-        <Button Content="Button" Grid.Row="5" Grid.Column="2" />
-        <Button Content="Button" Grid.Row="5" Grid.Column="3" />
-        <Button Content="Button" Grid.Row="6" Grid.Column="0" />
-        <Button Content="Button" Grid.Row="6" Grid.Column="1" />
-        <Button Content="Button" Grid.Row="6" Grid.Column="2" />
-        <Button Content="Button" Grid.Row="6" Grid.Column="3" />
+        <TextBlock HorizontalAlignment="Left" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="54" Width="303" FontSize="25" TextAlignment="Right" Grid.ColumnSpan="4" Margin="6,0,0,0"/>
+        <Button Content="(" Grid.Row="2" Grid.Column="0" FontSize="20" />
+        <Button Content=")" Grid.Row="2" Grid.Column="1" FontSize="20" />
+        <Button Content="C" Grid.Row="2" Grid.Column="2" FontSize="20"/>
+        <Button Content="X" Grid.Row="2" Grid.Column="3" FontSize="20"/>
+        <Button Content="7" Grid.Row="3" Grid.Column="0" FontSize="20" />
+        <Button Content="8" Grid.Row="3" Grid.Column="1" FontSize="20" />
+        <Button Content="9" Grid.Row="3" Grid.Column="2" FontSize="20"/>
+        <Button Content="+" Grid.Row="3" Grid.Column="3" FontSize="25"/>
+        <Button Content="7" Grid.Row="4" Grid.Column="0" FontSize="20"/>
+        <Button Content="8" Grid.Row="4" Grid.Column="1" FontSize="20"/>
+        <Button Content="9" Grid.Row="4" Grid.Column="2" FontSize="20"/>
+        <Button Content="4" Grid.Row="4" Grid.Column="3" FontSize="20"/>
+        <Button Content="4" Grid.Row="4" Grid.Column="0" FontSize="20"/>
+        <Button Content="5" Grid.Row="4" Grid.Column="1" FontSize="20"/>
+        <Button Content="6" Grid.Row="4" Grid.Column="2" FontSize="20"/>
+        <Button Content="-" Grid.Row="4" Grid.Column="3" FontSize="25"/>
+        <Button Content="3" Grid.Row="5" Grid.Column="0" FontSize="20"/>
+        <Button Content="2" Grid.Row="5" Grid.Column="1" FontSize="20"/>
+        <Button Content="1" Grid.Row="5" Grid.Column="2" FontSize="20"/>
+        <Button Content="*" Grid.Row="5" Grid.Column="3" FontSize="30"/>
+        <Button Content="," Grid.Row="6" Grid.Column="0" FontSize="30"/>
+        <Button Content="0" Grid.Row="6" Grid.Column="1" FontSize="20"/>
+        <Button Content="=" Grid.Row="6" Grid.Column="2" FontSize="25"/>
+        <Button Content="/" Grid.Row="6" Grid.Column="3" FontSize="20"/>
 
     </Grid>
 </Window>
