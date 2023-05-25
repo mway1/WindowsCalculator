@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace WindowsCalculator.UI
 {
@@ -21,36 +22,128 @@ namespace WindowsCalculator.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Queue<string> QueueRequests = new Queue<string>();
+        private Queue<string> QueueResults = new Queue<string>();
+        private int calculationTime = 0;
+
         public MainWindow()
         {
             InitializeComponent();
-            foreach(UIElement element in Main.Children)
+            foreach (UIElement element in Main.Children)
             {
-                if(element is Button)
+                if (element is Button)
                 {
                     ((Button)element).Click += Button_Click;
                 }
             }
         }
+        public void AddRequest(string request)
+        {
+            QueueRequests.Enqueue(request);
+        }
 
-        private void Button_Click(object sender,RoutedEventArgs e)
+        public void SetCalculationTime(string setTime)
+        {
+            if (int.TryParse(setTime, out calculationTime))
+            {
+                 
+            }
+            else
+            {
+                MessageBox.Show("Неверный формат числа!");
+            }
+        }
+
+        public void StartProcessing()
+        {
+            Thread thread = new Thread(ProcessRequests);
+            thread.Start();
+        }
+
+
+        private void ProcessRequests()
+        {
+            string result = "";
+            while (true)
+            {
+                if (QueueRequests.Count > 0)
+                {
+                    string request = QueueRequests.Dequeue();
+
+                    result = PerformCalculation(request);
+                    QueueResults.Enqueue(result);
+                    Dispatcher.Invoke(() =>
+                    {
+                        LB_Request.Items.Add("QueueRequestSize: " + QueueRequests.Count);
+                        LB_Request.Items.Add("Result of calc: " + result);
+                        
+                    });
+                }
+
+                Thread.Sleep(calculationTime * 1000);
+            }
+        }
+
+        private string PerformCalculation(string request)
+        {
+            try
+            {
+            string result = new DataTable().Compute(request, null).ToString();
+            
+                return result;
+
+            }
+            catch (SyntaxErrorException)
+            {
+                return "Ошибка в синтаксисе выражения!";
+            }
+            catch (DivideByZeroException)
+            {
+                return "Деление на ноль!";
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             string str = (string)((Button)e.OriginalSource).Content;
+            List<string> requsts = new List<string>();
 
-            if(str  == "C")
+            try
             {
-                TB_Text.Text = ""; 
+                if (str == "C")
+                {
+                    TB_Text_ResultsOfCalc.Text = "";
+                }
+                else if (str == "--")
+                {
+                    TB_Text_ResultsOfCalc.Text = TB_Text_ResultsOfCalc.Text.Substring(0, TB_Text_ResultsOfCalc.Text.Length - 1);
+                }
+                else if (str == "AddRequest")
+                {
+                    if (TB_Text_ResultsOfCalc.Text.Length > 0)
+                    {
+                        if (TB_caclTime.Text.Length > 0)
+                        {
+                            AddRequest(TB_Text_ResultsOfCalc.Text);
+                            SetCalculationTime(TB_caclTime.Text);
+                            TB_Text_ResultsOfCalc.Text = "";
+                            TB_caclTime.Text = "";
+
+                        }else MessageBox.Show("Укажите время выполнения вычисления");
+                    }
+                    else MessageBox.Show("Вы не ввели пример");
+                }
+                else if (str == "StartCalc")
+                {
+                    StartProcessing();
+                }
+                else TB_Text_ResultsOfCalc.Text += str;
             }
-            else if(str == "--")
+            catch (Exception)
             {
-                TB_Text.Text = TB_Text.Text.Substring(0,TB_Text.Text.Length - 1);
+                MessageBox.Show("На ноль делить нельзя!");
             }
-            else if(str == "=")
-            {
-                string value = new DataTable().Compute(TB_Text.Text, null).ToString();
-                TB_Text.Text = value;
-            }
-            else TB_Text.Text += str;
         }
-    }
+        }
 }
+
